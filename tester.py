@@ -90,3 +90,29 @@ print("Simple Neural Network")
 print(confusion_matrix(y_test, nn_y_pred))
 print(classification_report(y_test, nn_y_pred))
 print("Accuracy:", accuracy_score(y_test, nn_y_pred))
+
+#%% graphing
+
+import matplotlib.pyplot as plt
+
+
+# logistic regression coefficients
+fig, ax = plt.subplots()
+
+# hbars = ax.bar(np.arange(len(X)), model.coef_, align='center')
+hbars = ax.bar(X, model.coef_[0])
+plt.xticks(rotation=90)
+ax.set_xlabel('Parameter')
+ax.set_title('Logistic Regression Coefficent Values')
+
+plt.show()
+
+# random forest feature importances
+fig, ax = plt.subplots()
+
+hbars = ax.bar(X, rf_model.feature_importances_)
+plt.xticks(rotation=90)
+ax.set_ylabel("Mean Decrease in Impurity")
+ax.set_title('Feature Importances using MDI')
+
+plt.show()
